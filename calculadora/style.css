@@ -1,0 +1,163 @@
+/* ===== Estilo general ===== */
+body {
+    background-color: #dcdeec;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+/* ===== Caja principal ===== */
+.calculadora {
+    background-color: #f8f3f3;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 320px;
+    box-sizing: border-box;
+    transition: box-shadow 0.3s, padding 0.3s;
+}
+
+.calculadora:hover {
+    box-shadow: 0 20px 45px rgba(114, 38, 38, 0.15);
+}
+
+/* ===== Resultado ===== */
+#resultado {
+    font-size: 2.4rem;
+    margin-bottom: 20px;
+    color: #444;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+#resultado.error {
+    color: #d33;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* ===== Inputs ===== */
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin: 6px 0;
+    border: 1.5px solid #ccc;
+    border-radius: 10px;
+    font-size: 1rem;
+    background-color: #fafafa;
+    color: #333;
+    text-align: center;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+input[type="number"]:focus {
+    border-color: #999;
+    outline: none;
+}
+
+/* ===== Radio buttons ===== */
+.radios {
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+}
+
+.radios label {
+    font-size: 1rem;
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.radios input[type="radio"] {
+    transform: scale(1.2);
+    accent-color: #bfa890;
+}
+
+/* ===== Botón calcular ===== */
+button {
+    background-color: #d6bfa3;
+    color: #fff;
+    border: none;
+    padding: 12px 18px;
+    margin-top: 10px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+button:hover {
+    background-color: #bfa890;
+    transform: scale(1.05);
+    box-shadow: 0 0 12px rgba(214, 191, 163, 0.7);
+}
+
+button:active {
+    transform: scale(0.96);
+}
+
+/* ===== Botón modo compacto ===== */
+#modoCompactoToggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    background-color: #796b5c;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    z-index: 10;
+}
+
+#modoCompactoToggle:hover {
+    background-color: #e9d3bc;
+}
+
+/* ===== Modo compacto ===== */
+.calculadora.compacto {
+    padding: 20px 15px;
+    max-width: 260px;
+}
+
+.calculadora.compacto button {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+}
+
+.calculadora.compacto input[type="number"] {
+    padding: 8px;
+    font-size: 0.9rem;
+}
+
+/* ===== Responsive (extra) ===== */
+@media (max-width: 500px) {
+    .calculadora {
+        padding: 30px 20px;
+    }
+
+    .radios {
+        align-items: stretch;
+    }
+
+    .radios label {
+        font-size: 0.95rem;
+    }
+}

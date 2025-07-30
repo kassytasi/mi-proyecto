@@ -1,0 +1,112 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+}
+
+.contenedor {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  grid-template-rows: auto 1fr auto;
+  width: 80%;
+  margin: auto;
+  background: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.barrasuperior {
+  grid-column: 1 / span 2;
+  display: flex;
+  flex-direction: row;
+  background: linear-gradient(to right, #465a63, #7d9fd2);
+  color: white;
+  padding: 20px;
+  align-items: center;
+  border-bottom: 8px solid #7d9fd2;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile img {
+  width: 80px;
+  border-radius: 50%;
+  border: 3px solid white;
+}
+
+.aboutme {
+  margin-left: auto;
+  width: 50%;
+}
+
+.barraizquierda, .barraderecha {
+  padding: 20px;
+}
+
+.barraizquierda {
+  background-color: #f0f0f0;
+}
+
+.barraderecha {
+  background-color: white;
+}
+
+.skill, .language {
+  margin: 10px 0;
+}
+
+.bar {
+  height: 8px;
+  background: #ccc;
+  border-radius: 4px;
+  margin-top: 4px;
+  position: relative;
+}
+
+.bar.orange::before, .bar.green::before, .bar.blue::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-radius: 4px;
+}
+
+.bar.orange::before {
+  width: 100%;
+  background: #f4a261;
+}
+
+.bar.green::before {
+  width: 100%;
+  background: #2a9d8f;
+}
+
+.bar.blue::before {
+  width: 100%;
+  background: #457b9d;
+}
+
+.bar.orange, .bar.green, .bar.blue {
+  overflow: hidden;
+}
+
+.experience, .education {
+  margin-bottom: 15px;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+.barrainferior {
+  grid-column: 1 / span 2;
+  background-color: #384b52;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  border-top: 8px solid #7d9fd2;
+}
