@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Monumentos</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <div id="listaMonumentos"></div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", async function () {
+      const lista = document.getElementById("listaMonumentos");
+
+      try {
+        const res = await axios.get("./lugares.json");
+        res.data.forEach(monumento => {
+          const item = document.createElement("div");
+          item.className = "chat-item";
+
+          item.innerHTML = `
+            <img src="${monumento.url_imagen}" alt="${monumento.nombre}" />
+            <div class="chat-details">
+              <div class="chat-name">${monumento.nombre}</div>
+              <div class="chat-location">
+                <span class="ciudad">${monumento.ciudad}</span>,
+                <span class="pais">${monumento.pais}</span>
+              </div>
+            </div>
+          `;
+
+          item.addEventListener("click", () => {
+            localStorage.setItem("monumentoSeleccionado", JSON.stringify(monumento));
+            window.location.href = "detalle.html";
+          });
+
+          lista.appendChild(item);
+        });
+      } catch (error) {
+        lista.innerHTML = `<p>Error al cargar los monumentos.</p>`;
+        console.error(error);
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+
+

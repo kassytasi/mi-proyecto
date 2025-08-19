@@ -1,0 +1,78 @@
+<!-- detalle.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Detalle del Monumento</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="detalleMonumento"></div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const detalle = document.getElementById("detalleMonumento");
+      const monumento = JSON.parse(localStorage.getItem("monumentoSeleccionado"));
+
+      if (!monumento) {
+        detalle.innerHTML = "<p>No se encontró información del monumento.</p>";
+        return;
+      }
+
+      const colorPrimario = monumento.categoria?.colorPrimario || "#000";
+      const colorSecundario = monumento.categoria?.colorSecundario || "#ccc";
+
+      const lat = monumento.coordenadas?.latitud ?? "No disponible";
+      const lon = monumento.coordenadas?.longitud ?? "No disponible";
+      const descripcion = monumento.descripcion || "No disponible";
+
+      detalle.style.display = "block";
+      detalle.style.background = `linear-gradient(to bottom right, ${colorPrimario}, ${colorSecundario})`;
+      detalle.style.color = "#fff";
+
+      detalle.innerHTML = `
+        <div class="detalle-contenido">
+          <img src="${monumento.url_imagen}" alt="${monumento.nombre}" />
+          <h2 id="color">${monumento.nombre}</h2>
+          <p id="color"><strong>Ciudad:</strong> ${monumento.ciudad}</p>
+          <p id="color"><strong>País:</strong> ${monumento.pais}</p>
+          <p id="color"><strong>Latitud:</strong> ${lat}</p>
+          <p id="color"><strong>Longitud:</strong> ${lon}</p>
+          <p id="color"><strong>Descripción:</strong> ${descripcion}</p>
+
+          <h4 id="color">Datos Interesantes</h4>
+          <ul id="color">
+            ${
+              Array.isArray(monumento.datosInteresantes)
+                ? monumento.datosInteresantes.map(d => `<li><strong>${d.titulo}:</strong> ${d.valor}</li>`).join("")
+                : "<li>No hay datos disponibles</li>"
+            }
+          </ul>
+
+          <h4 id="color">Actividades Recomendadas</h4>
+          <ul id="color">
+            ${
+              Array.isArray(monumento.actividadesRecomendadas)
+                ? monumento.actividadesRecomendadas.map(a => `<li>${a}</li>`).join("")
+                : "<li>No hay actividades disponibles</li>"
+            }
+          </ul>
+
+          <div class="colores">
+            <div><strong>Color Primario:</strong> <span style="color:${colorPrimario};">${colorPrimario}</span></div>
+            <div><strong>Color Secundario:</strong> <span style="color:${colorSecundario};">${colorSecundario}</span></div>
+          </div>
+
+          <button class="volver-btn" onclick="window.history.back()">⬅ Volver</button>
+        </div>
+      `;
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
