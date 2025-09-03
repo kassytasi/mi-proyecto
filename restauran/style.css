@@ -246,6 +246,19 @@ button:hover, button:focus {
   line-height: 1;
 }
 
+/* Estilos personalizados para el botón “Pagar” */
+.btn-pagar-custom {
+  background-color: #007bff !important;
+  color: #fff !important;
+  border-color: #007bff !important;
+}
+
+.btn-pagar-custom:hover,
+.btn-pagar-custom:focus,
+.btn-pagar-custom:active {
+  background-color: #0056b3 !important;
+  border-color: #0056b3 !important;
+}
 
 /* Para que el layout sea limpio en móvil */
 @media (max-width: 720px) {
@@ -270,4 +283,5 @@ button:hover, button:focus {
     justify-content: flex-start;
   }
 }
+
 
